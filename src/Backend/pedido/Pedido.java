@@ -1,6 +1,6 @@
 package Backend.pedido;
 
-import Backend.cliente.Cliente;
+import Backend.persona.cliente.Cliente;
 import Backend.factura.Factura;
 import Backend.productos.Producto;
 

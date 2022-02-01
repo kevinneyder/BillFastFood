@@ -1,6 +1,6 @@
 package Frontend.pedidoController;
 
-import Backend.cliente.Cliente;
+import Backend.persona.cliente.Cliente;
 import Backend.productos.Producto;
 
 import java.util.ArrayList;
