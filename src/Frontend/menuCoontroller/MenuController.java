@@ -35,64 +35,67 @@ public class MenuController {
         productos.add(new ToppingExtra("Papas fritas", 10, "mediano"));
         productos.add(new ToppingExtra("Yuca", 10, "Grande"));
         productos.add(new ToppingExtra("Ensalada", 10, "pequenio"));
-
-
     }
 
-    public void printCategoria(){
-        Scanner sc = new Scanner (System.in);
-            System.out.println("===============================================");
-            System.out.println("|    Seleccione una categoria por favor       |");
-            System.out.println("===============================================");
-            System.out.println("|CATEGORIAS:                                  |");
-            System.out.println("|           1.-" + Categoria.HAMBURGUESAS+"                   |");
-            System.out.println("|           2.-" + Categoria.PIZZAS+"                         |");
-            System.out.println("|           3.-" + Categoria.ALITAS+"                         |");
-            System.out.println("|           4.-" + Categoria.TOPPING_EXTRAS+"                 |");
-            System.out.println("===============================================");
-            printProductoCategoria(sc.nextInt()-1);
+    public void printMenu(){
+        int index = 0;
+        System.out.println("=".repeat(101));
+        System.out.printf("%s%60s%40s%n","*", "!! MENU DEL DIA !!","*");
+        System.out.println("=".repeat(101));
+        System.out.println("-".repeat(101));
+        System.out.printf("|%s%88s|%n","CATEGORIAS:","");
+        for (Categoria c : Categoria.values()) {
+            System.out.printf("|%40s%-59s|\n","", "~~~~ "+ c +" ~~~~");
+            printProductoCategoria(index);
+            index++;
+        }
+        System.out.println("=".repeat(101));
     }
 
     private void printProductoCategoria(int categoria){
         Scanner sc = new Scanner (System.in);
-        ArrayList<Producto> aux = new ArrayList<>();
-        int i;
         boolean b = true;
-        do {
-            System.out.println("Elija una opcion o pulse 0 para salir");
-            AtomicInteger index = new AtomicInteger(1);
-            System.out.println("===============================================");
-            System.out.println("|      Seleccione un producto por favor       |");
-            System.out.println("===============================================");
-            System.out.println(""+Categoria.values()[categoria]+":");
+            AtomicInteger index = new AtomicInteger(0);
             productos.forEach((p) -> {
+                index.getAndIncrement();
                 if(Categoria.values()[categoria].toString().equals(p.getCategoria().toString())){
-                    aux.add(p);
-                    System.out.println((index.getAndIncrement()) +".-"+  p.getNombre() +"............"+ p.getPrecio()+"Bs.");
+                    System.out.printf( "| %-5s%-25s%s%14s\n", index+".-",  p.getNombre() ,".".repeat(55), p.getPrecio()+" Bs. |");
                 }
             });
-            System.out.println("===============================================");
-            i=sc.nextInt();
-            if (i == 0){
-                b = false;
-//                productosSeleccionados.add(aux.get(0));
-            }else {
-                productosSeleccionados.add(aux.get(i-1));
-            }
-        }while (b);
-        printSeleccionados();
+            System.out.printf("\n");
     }
 
+
     public void printSeleccionados() {
-        AtomicInteger i = new AtomicInteger(1);
         productosSeleccionados.forEach((p) -> {
-            System.out.println((i.getAndIncrement()) +".-"+  p.getNombre() +"............"+ p.getPrecio()+"Bs.");
+                System.out.printf( "| %-5s%-25s%s%14s\n", "",  p.getNombre() ,".".repeat(55), p.getPrecio()+" Bs. |");
         });
+    }
+
+    public void seleccionar(){
+        int seleccion;
+        printMenu();
+        System.out.println("Seleccione un producto por favor: ");
+            Scanner sc = new Scanner (System.in);
+            seleccion = sc.nextInt();;
+            if(seleccion != 0){
+                productosSeleccionados.add(productos.get(seleccion-1));
+            }
     }
 
     public ArrayList<Producto> menuSeleccionado(){
         return productosSeleccionados;
     }
 
+    private void seleccionarCantidad(){
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Seleccione la cantidad:");
+
+
+    }
+
+    public ArrayList<Producto> getProductosSeleccionados() {
+        return productosSeleccionados;
+    }
 }
 
