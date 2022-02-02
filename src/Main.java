@@ -1,9 +1,8 @@
-import Frontend.menuCoontroller.MenuController;
+import Frontend.pedidoController.PedidoController;
 
 public class Main {
     public static void main(String args[]){
-        MenuController menu = new MenuController();
-        menu.printCategoria();
-//        menu.printSeleccionados();
+        PedidoController pedido = new PedidoController();
+        pedido.printMenu();
     }
 }
