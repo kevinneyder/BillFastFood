@@ -2,6 +2,7 @@ package Frontend.menuCoontroller;
 
 import Backend.productos.Producto;
 import Backend.productos.Categoria;
+import Backend.productos.bebida.Bebida;
 import Backend.productos.comida.alitas.AlitasPollo;
 import Backend.productos.comida.alitas.Guarnicion;
 import Backend.productos.comida.alitas.Salsa;
@@ -35,6 +36,20 @@ public class MenuController {
         productos.add(new ToppingExtra("Papas fritas", 10, "mediano"));
         productos.add(new ToppingExtra("Yuca", 10, "Grande"));
         productos.add(new ToppingExtra("Ensalada", 10, "pequenio"));
+        productos.add(new Bebida("Coca Cola 2L",10, 2, "Cola", 0, false, Categoria.GASEOSAS));
+        productos.add(new Bebida("Sprite 2L",10, 2, "Cola", 0, false, Categoria.GASEOSAS));
+        productos.add(new Bebida("Fanta Naranja 2L",15, 2, "Naranja", 0, false, Categoria.GASEOSAS));
+        productos.add(new Bebida("Jugo del Valle 2L",13, 2, "Uva", 0, false, Categoria.JUGOS));
+        productos.add(new Bebida("Juice Frut 2L",10, 2, "Durazno", 0, false, Categoria.JUGOS));
+        productos.add(new Bebida("Acuarius 2L",10, 2, "Manzana", 0, false, Categoria.JUGOS));
+        productos.add(new Bebida("Maltin",8, 2, "Malta", 0, false, Categoria.BEBIDAS_ENERGIZANTES));
+        productos.add(new Bebida("Malta",7, 2, "Malta", 0, false, Categoria.BEBIDAS_ENERGIZANTES));
+        productos.add(new Bebida("Red Bull",9, 2, "Red bull", 0, false, Categoria.BEBIDAS_ENERGIZANTES));
+        productos.add(new Bebida("Ron Abuelo",35, 2, "Ron", 13, false, Categoria.BEBIDAS_ALCOHOLICAS));
+        productos.add(new Bebida("Fernet",30, 2, "Ron", 15, false, Categoria.BEBIDAS_ALCOHOLICAS));
+        productos.add(new Bebida("Four Loko",25, 2, "Red bull", 17, false, Categoria.BEBIDAS_ALCOHOLICAS));
+
+
     }
 
     public void printMenu(){

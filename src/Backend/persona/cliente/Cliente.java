@@ -1,15 +1,12 @@
 package Backend.persona.cliente;
 
-public class Cliente {
-    private String nombre;
+import Backend.persona.Persona;
+
+public class Cliente extends Persona {
     private int nit;
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public Cliente(String nombre) {
+        super(nombre);
     }
 
     public int getNit() {

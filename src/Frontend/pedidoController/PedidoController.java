@@ -1,8 +1,9 @@
 package Frontend.pedidoController;
 
-import Backend.cliente.Cliente;
 import Backend.pedido.DetallePedido;
+import Backend.persona.cliente.Cliente;
 import Backend.productos.Producto;
+import Frontend.empleadosController.EmpleadosController;
 import Frontend.menuCoontroller.MenuController;
 
 import java.util.ArrayList;
@@ -11,8 +12,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class PedidoController {
     private ArrayList<Producto> productos;
-    private Cliente cliente = new Cliente();
+    private Cliente cliente = new Cliente("");
     private MenuController menu = new MenuController();
+    private EmpleadosController empleados = new EmpleadosController();
     private ArrayList<DetallePedido> detallePedidos = new ArrayList<>();
 
     public PedidoController() {
@@ -41,6 +43,7 @@ public class PedidoController {
         System.out.println("2. Realizar Pedido");
         System.out.println("3. Ver Detalle Pedidos");
         System.out.println("4. Imprimir factura");
+        System.out.println("5. Imprimir planilla sueldo");
         System.out.println("0. Salir");
         seleccion = sc.nextInt();
             switch (seleccion){
@@ -60,6 +63,9 @@ public class PedidoController {
                 case 4:
                     printFactura();
                     break;
+                case 5:
+                    empleados.printSalarios();
+                    menuOpciones();
                 default:
                     System.out.println("Opcion no valida");
 
@@ -93,12 +99,10 @@ public class PedidoController {
     }
 
     private void printDetalle() {
-        AtomicInteger index = new AtomicInteger(0);
         System.out.println("-".repeat(84));
         System.out.printf("|%-20s|%-40s|%-20s|\n", "CANTIDAD", "DESCRIPCION", "PRECIO");
         System.out.println("-".repeat(84));
         detallePedidos.forEach((p) -> {
-            index.getAndIncrement();
             System.out.printf( "|%-20s|%-40s|%-20s|\n", p.getCantidad()+"  ",  p.getProducto().getNombre() , p.getProducto().getPrecio()*p.getCantidad()+" Bs.");
         });
         System.out.println("-".repeat(84)+"");
