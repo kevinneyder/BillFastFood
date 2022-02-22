@@ -88,20 +88,20 @@ public class PedidoController {
         AtomicInteger index = new AtomicInteger(0);
         productos.forEach((p) -> {
             index.getAndIncrement();
-            System.out.printf( "| %-5s%-25s%s%14s\n", index+".-",  p.getNombre() ,".".repeat(55), p.getPrecio()+" Bs. |");
+            System.out.printf( "| %-5s%-25s%s%14s\n", index+".-",  p.getNombre() ,".......................................................", p.getPrecio()+" Bs. |");
         });
     }
 
     private void printDetalle() {
         AtomicInteger index = new AtomicInteger(0);
-        System.out.println("-".repeat(84));
+        System.out.println("------------------------------------------------------------------------------------");
         System.out.printf("|%-20s|%-40s|%-20s|\n", "CANTIDAD", "DESCRIPCION", "PRECIO");
-        System.out.println("-".repeat(84));
+        System.out.println("------------------------------------------------------------------------------------");
         detallePedidos.forEach((p) -> {
             index.getAndIncrement();
             System.out.printf( "|%-20s|%-40s|%-20s|\n", p.getCantidad()+"  ",  p.getProducto().getNombre() , p.getProducto().getPrecio()*p.getCantidad()+" Bs.");
         });
-        System.out.println("-".repeat(84)+"");
+        System.out.println("------------------------------------------------------------------------------------");
     }
 
     private void printFactura(){
@@ -118,8 +118,7 @@ public class PedidoController {
         System.out.printf("%-20s%-40s%-20s\n", "NOMBRE:  "+cliente.getNombre()+"        ", "NIT:  "+cliente.getNit(),"  ");
         printDetalle();
         System.out.printf("|%-20s|%-40s|%-20s|\n", "TOTAL COMPRA", "", getTotalPedido()+"Bs");
-        System.out.println("-".repeat(84));
-
+        System.out.println("------------------------------------------------------------------------------------");
 
     }
 

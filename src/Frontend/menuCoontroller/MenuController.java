@@ -39,17 +39,17 @@ public class MenuController {
 
     public void printMenu(){
         int index = 0;
-        System.out.println("=".repeat(101));
+        System.out.println("=====================================================================================================");
         System.out.printf("%s%60s%40s%n","*", "!! MENU DEL DIA !!","*");
-        System.out.println("=".repeat(101));
-        System.out.println("-".repeat(101));
+        System.out.println("=====================================================================================================");
+        System.out.println("-----------------------------------------------------------------------------------------------------");
         System.out.printf("|%s%88s|%n","CATEGORIAS:","");
         for (Categoria c : Categoria.values()) {
             System.out.printf("|%40s%-59s|\n","", "~~~~ "+ c +" ~~~~");
             printProductoCategoria(index);
             index++;
         }
-        System.out.println("=".repeat(101));
+        System.out.println("=====================================================================================================");
     }
 
     private void printProductoCategoria(int categoria){
@@ -59,7 +59,7 @@ public class MenuController {
             productos.forEach((p) -> {
                 index.getAndIncrement();
                 if(Categoria.values()[categoria].toString().equals(p.getCategoria().toString())){
-                    System.out.printf( "| %-5s%-25s%s%14s\n", index+".-",  p.getNombre() ,".".repeat(55), p.getPrecio()+" Bs. |");
+                    System.out.printf( "| %-5s%-25s%s%14s\n", index+".-",  p.getNombre() ,".......................................................", p.getPrecio()+" Bs. |");
                 }
             });
             System.out.printf("\n");
@@ -68,7 +68,7 @@ public class MenuController {
 
     public void printSeleccionados() {
         productosSeleccionados.forEach((p) -> {
-                System.out.printf( "| %-5s%-25s%s%14s\n", "",  p.getNombre() ,".".repeat(55), p.getPrecio()+" Bs. |");
+                System.out.printf( "| %-5s%-25s%s%14s\n", "",  p.getNombre() ,".......................................................", p.getPrecio()+" Bs. |");
         });
     }
 
